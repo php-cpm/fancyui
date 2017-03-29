@@ -1,0 +1,205 @@
+<section class="intro-content">
+	<h1 translate='{{vm.$state.current.name}}'></h1>
+  <p>{{'navMenuDesc' | translate}}</p>
+</section>
+
+<section class="intro-content">
+	<h2>{{'Install' | translate}}</h2>
+</section>
+
+<div class="example-block">
+<div class="highlight" hljs hljs-language="bash">
+npm install fancyui --save</div>
+</div>
+
+<section class="intro-content">
+	<h2>{{'Inject_Module' | translate}}</h2>
+</section>
+
+<div class="example-block">
+	<div class="highlight no-border" hljs hljs-language="javascript">
+import {Menu} from 'fancyui';
+
+export default angular.module('menuDemo', [
+  Menu.name
+])
+	</div>
+</div>
+
+<!--示例-->
+<h2>{{'Example'|translate}}</h2>
+<div class="example-block">
+	<div class="bs-example pop-confirm-example">
+		<f-navmenu menu-data="vm.menuData"
+               config="vm.config"
+               on-select="vm.onSelect"></f-navmenu>
+	</div>
+</div>
+
+<!--基础用法-->
+<h2>{{'Basic_Usage'|translate}}</h2>
+<h3>view</h3>
+<div class="example-block">
+<div class="highlight no-border" hljs hljs-language="html">
+<f-navmenu menu-data="vm.menuData"
+           config="vm.config"
+           on-select="vm.onSelect"></f-navmenu>
+</div>
+</div>
+
+<h3>controller</h3>
+
+<div class="example-block">
+<div class="highlight no-border" hljs hljs-language="javascript">
+this.menuData = [
+  {
+  node_id: "2377",
+  parent_id: "0",
+  application_id: "1",
+  application_node_id: "2377",
+  path: "0",
+  name: "券中心",
+  url: "",
+  is_del: "0",
+  is_show_menu: "1",
+  sort: "0",
+  icon: "default.png",
+  sub_folder: null,
+  remark: null,
+  danger: "2",
+  menu: "1",
+  id: "2377",
+  pid: "0",
+  appid: "1",
+  _child: [
+  {
+  node_id: "2379",
+  parent_id: "2377",
+  application_id: "1",
+  application_node_id: "2379",
+  path: "0-2377",
+  name: "优惠券列表",
+  url: "http://admincoupon.sit.ffan.com/page/CouponsManagement",
+  is_del: "0",
+  is_show_menu: "1",
+  sort: "0",
+  icon: null,
+  sub_folder: null,
+  remark: null,
+  danger: "2",
+  menu: "1",
+  id: "2379",
+  pid: "2377",
+  appid: "1"
+  }]
+  ];
+
+  this.config = {
+    childrenAttr: '_child',
+    idAttr: 'id',
+    parentAttr: 'pid',
+    hrefAttr: 'url',
+    textAttr: 'name',
+    iconAttr: 'icon',
+    matchCurrentUrl: node => {
+      if(location.hash.slice(1, location.hash.length) == node.url) {
+        return true;
+      }
+        return false;
+      }
+    };
+
+  this.onSelect = node => {
+    console.log('node clicked:' + node[this.config.textAttr]);
+  }
+</div>
+</div>
+
+<section class="intro-content">
+  <h2>{{'Options'|translate}}</h2>
+
+  <h3>f-navmenu props</h3>
+  <table class="demo-table">
+    <thead>
+    <tr>
+      <th>{{'Param'|translate}}</th>
+      <th>{{'Description'|translate}}</th>
+      <th>{{'Type'|translate}}</th>
+      <th>{{'DefaultValue'|translate}}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>menuData</td>
+      <td>{{'NavMenuApiDecMenuData'|translate}}</td>
+      <td>Object</td>
+      <td>null</td>
+    </tr>
+    <tr>
+      <td>config</td>
+      <td>{{'NavMenuApiDecConfig'|translate}}</td>
+      <td>Object</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>onSelect</td>
+      <td>{{'NavMenuApiDecOnSelect'|translate}}</td>
+      <td>function</td>
+      <td></td>
+    </tr>
+    </tbody>
+  </table>
+
+  <h3>config object</h3>
+  <table class="demo-table">
+    <thead>
+    <tr>
+      <th>{{'Param'|translate}}</th>
+      <th>{{'Description'|translate}}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>childrenAttr</td>
+      <td>{{'NavMenuApiDecChildrenAttr'|translate}}</td>
+    </tr>
+    <tr>
+      <td>
+        idAttr
+      </td>
+      <td>{{'NavMenuApiDecIdAttr'|translate}}</td>
+    </tr>
+    <tr>
+      <td>
+        parentAttr
+      </td>
+      <td>{{'NavMenuApiDecParentAttr'|translate}}</td>
+    </tr>
+    <tr>
+      <td>
+        hrefAttr
+      </td>
+      <td>{{'NavMenuApiDecHrefAttr'|translate}}</td>
+    </tr>
+    <tr>
+      <td>
+        textAttr
+      </td>
+      <td>{{'NavMenuApiDecTextAttr'|translate}}</td>
+    </tr>
+    <tr>
+      <td>
+        iconAttr
+      </td>
+      <td>{{'NavMenuApiDecIconAttr'|translate}}</td>
+    </tr>
+    <tr>
+      <td>
+        matchCurrentUrl
+      </td>
+      <td>{{'NavMenuApiDecMatchCurrentUrl'|translate}}</td>
+    </tr>
+    </tbody>
+  </table>
+</section>
+
